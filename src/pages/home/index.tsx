@@ -1,8 +1,9 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import { createUseStyles } from '@wonder-ui/styles';
 import useStore from 'src/hooks/useStore';
 import routing from "src/routing";
+
 
 import { Button, InputItem, Card, WingBlank, WhiteSpace } from 'antd-mobile';
 import { Flex, Page, Empty } from '@wonder-ui/core';
@@ -35,10 +36,35 @@ const HomePage = (): JSX.Element => {
 
   const classes = useStyles();
 
-  const goOrder = () => {
+  interface People {
+    name: string,
+    age?: number
+  };
+
+  const [val, setVal] = useState<string | number>();
+  const [people, setPeople] = useState<People>({
+    name: '1',
+    age: 2
+  });
+  const [dataList, setDataList] = useState<People[]>([]);
+
+  // init
+  useEffect(() => {
+    setVal('1');
+    setVal(3);
+    setPeople({
+      name: '2'
+    });
+    setDataList([
+      {name: '1', age: 1}
+    ]);
+  }, []);
+
+  const goOrder = (e: any) => {
+    console.log('e', e);
     routing.push('/order');
-  }
-  
+  };
+
   return (
     <Page>
       <div className={classes.root}>

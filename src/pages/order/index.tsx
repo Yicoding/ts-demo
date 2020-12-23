@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { createUseStyles } from '@wonder-ui/styles';
 import useStore from 'src/hooks/useStore';
